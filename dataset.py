@@ -82,7 +82,7 @@ class Dataset(data.Dataset):
         self.train = train
     
         # Load data
-        if dataset == "SpatialLIBD":
+        if dataset == "DLPFC":
             adata = load_ST_file(os.path.join(path, name))
             adata.X = adata.X.A
             df_meta = pd.read_csv(os.path.join(path, name, 'metadata.tsv'), sep='\t')
@@ -149,7 +149,7 @@ class Dataset(data.Dataset):
         updated_graphs = {}
         
         for sPathID, graph in self.processor.prebuilt_graphs.items():
-            if self.dataset == "SpatialLIBD":
+            if self.dataset == "DLPFC":
                 pdPathwayExprMatrix = xg.X.astype(float)
             elif self.dataset == "Her2st":
                 pdPathwayExprMatrix = xg.X.astype(int)
